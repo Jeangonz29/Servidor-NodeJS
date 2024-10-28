@@ -5,11 +5,11 @@ const noti = document.querySelector('.notification')
 const loginInput = document.querySelector('#login-input')
 
 
-formC.addEventListener('submit', async e=>{ //cuando le agg parentesis es cuando le agg mas de un paramentro comunmente, al e  //debemos hacer conexiones asincronas por eso el async
+formC.addEventListener('submit', async e=>{ //cuando le agg parentesis es cuando le agg mas de un paramentro comunmente, al e //debemos hacer conexiones asincronas por eso el async
     e.preventDefault() //evita que se recargue la pagina
     //console.log(!createInput.value)
     const respuesta = await fetch('http://localhost:3000/usuario',{
-        method: 'GET' //el get porque solo har una consulta, aqui hay otros tambien como el post
+        method: 'GET' //el get porque solo hara una consulta, aqui hay otros tambien como el post
     }) 
  
     const users = await respuesta.json()
@@ -28,7 +28,7 @@ formC.addEventListener('submit', async e=>{ //cuando le agg parentesis es cuando
             noti.classList.remove('show-notification')
         },2000)
     }else if(user){
-        //el caso si existe el usuario
+        //en caso de si existe el usuario
         noti.innerHTML =  'El usuario ya existe'
         noti.classList.add('show-notification')
 
@@ -41,7 +41,7 @@ formC.addEventListener('submit', async e=>{ //cuando le agg parentesis es cuando
         //todo esto aqui abajo tambien es un plantilla para crear usuarios
 
         await fetch('http://localhost:3000/usuario',{
-            method: 'POST', //el get porque solo har una consulta, aqui hay otros tambien como el post
+            method: 'POST', //el post es para registrar
             headers:{
                 'Content-Type': 'application/json' //este es para registrar, pero hay mas content-Type
             },
@@ -53,9 +53,9 @@ formC.addEventListener('submit', async e=>{ //cuando le agg parentesis es cuando
             username: createInput.value
         }
         const response = await axios.post('/api/users',newUser)
-        //axios es otra forma de conectarme como el fecht, y en este caso se pone de ruta el backend
-        //mejor manejo de errores que fecht
-        //para usar axios neceito instalarlo en el html
+        //axios es otra forma de conectarme como el fecht, y en este caso se pone de ruta del backend
+        //mejor manejo de errores que el fecht
+        //para usar axios necesito instalarlo en el html dentro del head como un script
         console.log(response)
         noti.innerHTML =  `El usuario ${createInput.value} se ha creado satisfactoriamente`
         noti.classList.add('show-notification')
@@ -74,7 +74,7 @@ formL.addEventListener('submit',async e=>{
 
     //aqui quiero hacer busqueda, entonces como lo tengo arriba, quiero consultar
     const respuesta = await fetch('http://localhost:3000/usuario',{
-        method: 'GET' //el get porque solo har una consulta, aqui hay otros tambien como el post
+        method: 'GET'
     })
     const users = await respuesta.json()
     //console.log(users)
