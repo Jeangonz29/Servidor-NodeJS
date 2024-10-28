@@ -1,9 +1,9 @@
-//1. hcaer el router
-//router: es el que me permite hacer el, permite hacer estas funciones, POST, GET, DELETE, UPDATE//HTTP
+//1. hacer el router
+//router: es el que me permite hacer estas funciones, POST, GET, DELETE, UPDATE y van al HTTP
 
 
 const userRouter = require('express').Router()
-//aqui siempre sera express, y se hace  un require para poder usarlo y permite generar router
+//aqui siempre sera express, y se hace un require para poder usarlo, (espress: este permite generar router)
 
 //conectar al modelo:
 const User = require('../models/usuarios')
@@ -11,15 +11,16 @@ const User = require('../models/usuarios')
 //ya aqui puedo utilizar lo que buscamos en mongoose de find, actualizar y demas
 
 //registrar la informacion que el usuario envia a traves del formulario
-//request es lo que recibimos del front, cuando llaman del front y cae en request y el response es un return
+
+//request es lo que recibimos del front, cuando llaman del front cae en request, el response es un return
 userRouter.post('/', (request, response)=>{
     const {username} = request.body
     //es lo que estamos trayendo del formulario, para llegar aca, me deben llaman desde el front
-    //este concolse va aparcer en la terminal de visual OJO
+    //este console va aparecer en la terminal de visual OJO
     console.log(username)
     //console.log(request.body)
-    // se puede validar en el front, pero si hay un fastidioso desde el inspeccionar
-    //pero para mas seguirdad validarlo aqui donde esta el fiscal xd
+    // se puede validar en el front, pero, alguien desde el inspeccionar puede cambiar las cosas
+    //pero para mas seguridad validarlo aqui donde esta el "fiscal(controllers)" xd
     //entonces: (validaciones a nivel de backend)
 
     if(!username){
@@ -45,12 +46,12 @@ userRouter.post('/', (request, response)=>{
 //si quiero hacer un consulta por usuario o por usuarios, puedo predefinir
 //si quiero hacer un consulta, puedo predefinir
 //aqui agg el post, el get, el delete y asi
-//aqui debo crear rutas para que cada una pueda llmar a su funcion
+//aqui debo crear rutas para que cada una pueda llamar a su funcion
 userRouter.get('/consultar-useer', async (request, response) => {
     const listUsuario = await User.find()
 })
 
-//obtener lista de usuaios
+//obtener lista de usuarios
 userRouter.get('/lista-users', async (request, response) => {
     try{
         const listado = await User.find()
