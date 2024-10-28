@@ -8,7 +8,7 @@ const listaA = document.querySelector('#todos-list')
 
 
 if(!user){
-    //no existe,  no ha iniciado sesion
+    //no existe, no ha iniciado sesion
     //enviarlo para el home
     window.location.href = '/'
 }
@@ -40,7 +40,7 @@ formulario.addEventListener('submit', async e=>{
     limpiarHTML()
     
      await fetch('http://localhost:3000/tareas',{
-        method: 'POST', //el get porque solo har una consulta, aqui hay otros tambien como el post
+        method: 'POST', 
         //para hacer post, debemos colocar el atributo header y header es un objeto
         headers:{
             'Content-Type': 'application/json' //este es para registrar, pero hay mas content-Type
