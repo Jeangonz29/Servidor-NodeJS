@@ -3,15 +3,12 @@ const mongoose = require('mongoose')
 
 //conexion a la bd
 
-
-
 //definir el esquema para usuarios //schema siginifica esquema
 const usuarioSchema = new mongoose.Schema({
     username: String
 })
 
 //configurar la respuesta del usuario en el esquema
-//
 
 usuarioSchema.set('toJSON',{
     transform:(document, returnObject)=>{
