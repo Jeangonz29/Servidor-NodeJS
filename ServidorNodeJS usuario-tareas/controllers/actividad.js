@@ -52,4 +52,17 @@ tareaRouter.get('/Lista-tareas', async (req, res) => {
         return res.status(400).json({error: 'ha corrido un error'})
     }
 })
+
+exports.eliminarTarea = async(req, res)=>{
+    try{ 
+        const id = req.params.id;
+        const resultado = await tarea.findByIdAndDelete(id);
+        if(resultado){
+            res.status(200).send(`se elimino la tarea con id ${id}`)
+        }
+    }catch (error){
+        res.status(500).send(`ha ocurrido un error ${error}`)
+    }
+};
+
 module.exports = tareaRouter

@@ -87,10 +87,12 @@ lista.addEventListener('click', async e=>{
     if(e.target.classList.contains('delete-btn')){
         const id = e.target.parentElement.id;
         //console.log(id)
-
-        await fetch(`http://localhost:3000/tareas/${id}`,{
+         await fetch(`http://localhost:3000/tareas/${id}`,{
             method: 'DELETE'})
-            e.target.parentElement.remove();
+
+           e.target.parentElement.remove();
+            console.log ('ELIMINEEEEEE')
+
     }else if(e.target.classList.contains('check-btn')){
         const id = e.target.parentElement.id;
 
@@ -102,8 +104,9 @@ lista.addEventListener('click', async e=>{
             body: JSON.stringify({checked:e.target.parentElement.classList.contains('check-todo p')?false:true})
         })
 
-        const response = await respuestaJSON.json()
+       // const response = await respuestaJSON.json()
         e.target.parentElement.classList.toggle('check-todo p')
+        console.log('TAREA LISTA')
     }
 })
 

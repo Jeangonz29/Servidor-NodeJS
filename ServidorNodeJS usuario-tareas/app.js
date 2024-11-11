@@ -8,6 +8,10 @@ const userRouter = require('./controllers/usuario')
 const tareaRouter = require('./controllers/actividad')
 
 
+
+
+
+
 //const port= process.env.PORT ||3000
 
 
@@ -39,7 +43,6 @@ app.use(express.json())
 //crear rutas de back end
 app.use('/api/users',userRouter)
 app.use('/api/tareas',tareaRouter)
-
 
 
 module.exports = app
